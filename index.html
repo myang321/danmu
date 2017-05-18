@@ -44,7 +44,7 @@ var m = [80, 160, 0, 160], // top right bottom left
     z = d3.scale.ordinal().range(["steelblue", "#aaa"]); // bar color
 
 var hierarchy = d3.layout.partition()
-    .value(function(d) { return d.size; });
+    .value(function(d) { return d.size; }).sort(function comparator(a, b) {return 0;});
 
 var xAxis = d3.svg.axis()
     .scale(x)
