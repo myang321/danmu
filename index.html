@@ -29,21 +29,23 @@ rect.background {
     </style>
   </head>
   <body>
-    <h2>
+    <h2 id="video_title">
     </h2>
     <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111116/d3/d3.js"></script>
     <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111116/d3/d3.layout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
 var m = [80, 160, 0, 160], // top right bottom left
     w = 1280 - m[1] - m[3], // width
-    h = 2800 - m[0] - m[2], // height
+    h = 1800 - m[0] - m[2], // height
     x = d3.scale.linear().range([0, w]),
     y = 25, // bar height
     z = d3.scale.ordinal().range(["steelblue", "#aaa"]); // bar color
 
 var hierarchy = d3.layout.partition()
     .value(function(d) { return d.size; }).sort(function comparator(a, b) {return 0;});
+    //.sort(function comparator(a, b) {return b.value-a.value;});
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -61,6 +63,7 @@ svg.append("svg:rect")
     .attr("height", h)
     .on("click", up);
 
+
 svg.append("svg:g")
     .attr("class", "x axis");
 
@@ -73,6 +76,8 @@ d3.json("flare2.json", function(root) {
   hierarchy.nodes(root);
   x.domain([0, root.value]).nice();
   down(root, 0);
+  $(document).prop('title', root.name);
+  $('#video_title').text(root.name);
 });
 
 function down(d, i) {
