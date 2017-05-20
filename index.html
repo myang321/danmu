@@ -31,6 +31,10 @@ rect.background {
   <body>
     <h2 id="video_title">
     </h2>
+    <h2 id="highlight_1s">
+    </h2>
+    <h2 id="highlight_ns">
+    </h2>
     <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111116/d3/d3.js"></script>
     <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111116/d3/d3.layout.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -78,6 +82,9 @@ d3.json("flare2.json", function(root) {
   down(root, 0);
   $(document).prop('title', root.name);
   $('#video_title').text(root.name);
+  $('#highlight_1s').text(root.highlight_1s);
+  $('#highlight_ns').text(root.highlight_ns);
+  console.log(root);
 });
 
 function down(d, i) {
