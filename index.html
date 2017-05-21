@@ -48,8 +48,9 @@ var m = [80, 160, 0, 160], // top right bottom left
     z = d3.scale.ordinal().range(["steelblue", "#aaa"]); // bar color
 
 var hierarchy = d3.layout.partition()
-    .value(function(d) { return d.size; }).sort(function comparator(a, b) {return 0;});
-    //.sort(function comparator(a, b) {return b.value-a.value;});
+    .value(function(d) { return d.size; })
+    .sort(function comparator(a, b) {return (b.name<a.name)?1:-1;});// sort by time
+    //.sort(function comparator(a, b) {return b.value-a.value;});// sort by danmu value
 
 var xAxis = d3.svg.axis()
     .scale(x)

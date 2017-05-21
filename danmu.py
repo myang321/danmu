@@ -80,7 +80,7 @@ def process_time(comments_time_list, max_second, title, filename):
     for i in range(max_minute):
         child_one = dict()
         children_level_two = []
-        child_one['name'] = 'min:' + str(i)
+        child_one['name'] = 'min:{:02d}'.format(i)
         child_one['children'] = children_level_two
         children_level_one.append(child_one)
         start_second = i * 60
@@ -133,7 +133,7 @@ def format_time(total_second):
 if __name__ == '__main__':
     # av = raw_input('input av:')
     av = '3133255'
-    part = '6'
+    part = '10'
     comments_time_list, max_second, title, filename = get_comments(av, part)
     # comments_time_list = list(range(2800))
     # max_second = len(comments_time_list)
